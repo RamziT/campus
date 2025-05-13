@@ -1,0 +1,22 @@
+.custom-sidebar,
+.custom-navbar {
+    background-color: #168F66;
+}
+
+.custom-sidebar .nav-item .nav-link,
+.custom-navbar .nav-item .nav-link {
+    color: white;
+}
+
+/* Style des liens actifs dans la sidebar */
+.nav-sidebar .nav-link.active,
+.nav-sidebar .nav-link:hover,
+.nav-sidebar .menu-open > .nav-link {
+    background-color: #168F66;
+}
+
+.nav-sidebar .nav-link.active,
+.nav-sidebar .nav-link:hover {
+    color: #ffc107 !important;
+    font-weight: 600;
+}
