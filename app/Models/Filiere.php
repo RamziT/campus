@@ -9,7 +9,7 @@ class Filiere extends Model
 {
     use SoftDeletes;
 
-    protected $table = '';
+    protected $table = 'filieres';
 
     protected $guarded = [ 'id' ];
 }

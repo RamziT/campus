@@ -12,4 +12,14 @@ class Universite extends Model
     protected $table = 'universites';
 
     protected $guarded = [ 'id' ];
+
+    /**
+     * UFR
+     *
+     * @return void
+     */
+    public function UFRs()
+    {
+        return $this->hasMany(UFR::class);
+    }
 }

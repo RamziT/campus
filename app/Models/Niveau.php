@@ -9,7 +9,7 @@ class Niveau extends Model
 {
     use SoftDeletes;
 
-    protected $table = '';
+    protected $table = 'niveaux';
 
     protected $guarded = [ 'id' ];
 }

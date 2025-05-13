@@ -9,7 +9,16 @@ class Departement extends Model
 {
     use SoftDeletes;
 
-    protected $table = '';
+    protected $table = 'departements';
 
     protected $guarded = [ 'id' ];
+
+    public function UFR()
+    {
+        return $this->belongsTo(UFR::class);
+    }
+
+    public function filieres(){
+        return $this->hasMany(Filiere::class);
+    }
 }

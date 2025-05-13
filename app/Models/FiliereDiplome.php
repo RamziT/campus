@@ -9,7 +9,7 @@ class FiliereDiplome extends Model
 {
     use SoftDeletes;
 
-    protected $table = '';
+    protected $table = 'filieres_diplomes';
 
     protected $guarded = [ 'id' ];
 }
