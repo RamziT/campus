@@ -11,15 +11,30 @@ class Universite extends Model
 
     protected $table = 'universites';
 
-    protected $guarded = [ 'id' ];
+    protected $guarded = ['id'];
 
-    /**
-     * UFR
-     *
-     * @return void
-     */
-    public function UFRs()
+    public function ufrs()
     {
         return $this->hasMany(UFR::class);
+    }
+
+    public function scopeWithUfrs($query)
+    {
+        return $query->with('ufrs');
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($universite) {
+            foreach ($universite->ufrs as $ufr) {
+                $ufr->deleted_by = 'system';
+                $ufr->save();
+
+                $ufr->delete();
+            };
+
+            $universite->deleted_by = 'system';
+            $universite->save();
+        });
     }
 }

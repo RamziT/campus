@@ -16,11 +16,16 @@ return new class extends Migration
             $table->enum('libelle', ['Licence 1',  'Licence 2',  'Licence 3',  'Master 1',  'Master 2', 'Doctorat 1', 'Doctorat 2', 'Doctorat 3']);
             $table->enum('abreviation', ['L1', 'L2', 'L3', 'M1', 'M2',  'D1', 'D2', 'D3'])->nullable();
             $table->foreignId('filiere_id')->constrained('filieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('accessible')->default(0);
+            $table->enum('statut', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
+
+            $table->unique(['libelle', 'filiere_id']);
+            $table->unique(['abreviation', 'filiere_id']);
         });
     }
 

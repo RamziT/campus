@@ -13,12 +13,38 @@ class Departement extends Model
 
     protected $guarded = [ 'id' ];
 
-    public function UFR()
+    public function ufr()
     {
         return $this->belongsTo(UFR::class);
     }
 
-    public function filieres(){
+    public function filieres()
+    {
         return $this->hasMany(Filiere::class);
+    }
+
+    public function scopeWithUfr($query)
+    {
+        return $query->with('ufr');
+    }
+
+    public function scopeWithFilieres($query)
+    {
+        return $query->with('filieres');
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($departement) {
+            foreach ($departement->filieres as $filiere) {
+                $filiere->deleted_by = 'system';
+                $filiere->save();
+
+                $filiere->delete();
+            };
+
+            $departement->deleted_by = 'system';
+            $departement->save();
+        });
     }
 }

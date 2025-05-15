@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('filieres_diplomes', function (Blueprint $table) {
+        Schema::create('niveaux_diplomes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('filiere_id')->constrained('filieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('niveau_id')->constrained('niveaux')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('diplome_id')->constrained('diplomes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
+
+            $table->unique(['niveau_id', 'diplome_id']);
         });
     }
 

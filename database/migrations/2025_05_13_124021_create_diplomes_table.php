@@ -16,7 +16,9 @@ return new class extends Migration
             $table->enum('libelle', ['Baccaulérat', 'Licence', 'Licence Professionnelle', 'Master', 'Doctorant']);
             $table->string('abreviation')->nullable();
             $table->string('serie')->nullable();
+            $table->string('specialite')->nullable();
             $table->string('option')->nullable();
+            $table->enum('statut', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by');

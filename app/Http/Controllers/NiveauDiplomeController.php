@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FiliereDiplome;
+use App\Models\NiveauDiplome;
 use Illuminate\Http\Request;
 
-class FiliereDiplomeController extends Controller
+class NiveauDiplomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class FiliereDiplomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FiliereDiplome $filiereDiplome)
+    public function show(NiveauDiplome $filiereDiplome)
     {
         //
     }
@@ -42,7 +42,7 @@ class FiliereDiplomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FiliereDiplome $filiereDiplome)
+    public function edit(NiveauDiplome $filiereDiplome)
     {
         //
     }
@@ -50,7 +50,7 @@ class FiliereDiplomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FiliereDiplome $filiereDiplome)
+    public function update(Request $request, NiveauDiplome $filiereDiplome)
     {
         //
     }
@@ -58,7 +58,7 @@ class FiliereDiplomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FiliereDiplome $filiereDiplome)
+    public function destroy(NiveauDiplome $filiereDiplome)
     {
         //
     }

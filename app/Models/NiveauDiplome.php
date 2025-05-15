@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FiliereDiplome extends Model
+class NiveauDiplome extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'filieres_diplomes';
+    protected $table = 'niveaux_diplomes';
 
     protected $guarded = [ 'id' ];
+
 }

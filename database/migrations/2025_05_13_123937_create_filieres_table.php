@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('filieres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('departement_id')->constrained('departements')->onDelete('cascade')->onUpdate('cascade');
             $table->string('libelle');
             $table->string('abreviation')->nullable();
             $table->string('responsable_id')->nullable();
             $table->string('contact')->nullable();
             $table->string('email')->nullable();
-            $table->foreignId('departement_id')->constrained('departements')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('statut', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
+
+            $table->unique(['libelle', 'departement_id']);
+            $table->unique(['abreviation', 'departement_id']);
         });
     }
 

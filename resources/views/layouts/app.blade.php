@@ -94,7 +94,7 @@
             </nav>
 
             <!-- Sidebar -->
-            <aside class="main-sidebar custom-sidebar elevation-2 mb-2 d-none d-md-block col-md-2 vh-100">
+            <aside class="main-sidebar custom-sidebar elevation-2 d-none d-md-block col-md-2 vh-100 bg-success">
                 <div class="sidebar h-100">
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
@@ -102,33 +102,33 @@
                             data-accordion="true">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ url('/') }}" class="nav-link">
+                                    <a href="{{ route('universites.index') }}" class="nav-link">
                                         <i class="fas fa-university me-2"></i> Universités
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('ufrs.index') }}" class="nav-link">
                                         <i class="fas fa-graduation-cap me-2"></i> UFR
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('departements.index') }}" class="nav-link">
                                         <i class="fas fa-building me-2"></i> Départements
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('filieres.index') }}" class="nav-link">
                                         <i class="fas fa-book-open me-2"></i> Filières
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('niveaux.index') }}" class="nav-link">
                                         <i class="fas fa-layer-group me-2"></i> Niveaux
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-certificate me-2"></i> Baccalauréats
+                                    <a href="{{ route('diplomes.index') }}" class="nav-link">
+                                        <i class="fas fa-certificate me-2"></i> Diplômes
                                     </a>
                                 </li>
                                 <li class="nav-item">

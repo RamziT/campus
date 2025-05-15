@@ -6,7 +6,6 @@
             <div class="container text-center">
                 <h3 class="display-4 mb-2 text-success fw-medium">
                     {{-- title here --}}
-                    Bienvenue
                 </h3>
             </div>
         </section>

@@ -13,13 +13,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $this->call([
+            UniversiteSeeder::class,
+            UfrSeeder::class,
+            DepartementSeeder::class,
+            FiliereSeeder::class,
+            NiveauSeeder::class,
+            DiplomeSeeder::class,
+            NiveauDiplomeSeeder::class,
+        ]);
+
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'matricule' => 'MAT',
-            'email' => 'test@example.com',
-            'created by' => 'system'
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'matricule' => 'MAT',
+        //     'email' => 'test@example.com',
+        //     'created by' => 'system'
+        // ]);
     }
 }
