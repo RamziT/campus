@@ -15,7 +15,7 @@ class Universite extends Model
 
     public function ufrs()
     {
-        return $this->hasMany(UFR::class);
+        return $this->hasMany(UFR::class, 'universite_id', 'id');
     }
 
     public function scopeWithUfrs($query)
@@ -27,12 +27,11 @@ class Universite extends Model
     {
         static::deleting(function ($universite) {
             foreach ($universite->ufrs as $ufr) {
-                $ufr->deleted_by = 'system';
-                $ufr->save();
-
                 $ufr->delete();
             };
 
+            $universite->statut = 'inactive';
+            $universite->updated_by = 'system';
             $universite->deleted_by = 'system';
             $universite->save();
         });

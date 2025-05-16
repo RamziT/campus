@@ -28,6 +28,8 @@ class Diplome extends Model
         static::deleting(function ($diplome) {
             $diplome->niveaux()->detach();
 
+            $diplome->statut = 'inactive';
+            $diplome->updated_by = 'system';
             $diplome->deleted_by = 'system';
             $diplome->save();
         });

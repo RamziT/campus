@@ -6,6 +6,7 @@ use App\Models\Filiere;
 use App\Models\Niveau;
 use App\Models\Departement;
 use App\Models\Diplome;
+use App\Models\Universite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -26,9 +27,9 @@ class FiliereController extends Controller
      */
     public function create()
     {
-        $departements = Departement::all();
-        $diplomes = Diplome::where('statut', 'active')->get();
-        return view('filieres.create', compact('departements', 'diplomes'));
+        $universites = Universite::where('statut', 'active')->orderBy('libelle')->get();
+        $diplomes = Diplome::orderBy('libelle')->where('statut', 'active')->get();
+        return view('filieres.create', compact('universites', 'diplomes'));
     }
 
     /**
@@ -103,10 +104,10 @@ class FiliereController extends Controller
      */
     public function edit(Filiere $filiere)
     {
-        $departements = Departement::all();
-        $diplomes = Diplome::where('statut', 'active')->get();
+        $universites = Universite::where('statut', 'active')->orderBy('libelle')->get();
+        $diplomes = Diplome::where('statut', 'active')->orderBy('libelle')->get();
         $filiere->load('niveaux.diplomes');
-        return view('filieres.edit', compact('filiere', 'departements', 'diplomes'));
+        return view('filieres.edit', compact('filiere', 'universites', 'diplomes'));
     }
 
     /**

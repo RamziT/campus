@@ -15,12 +15,12 @@ class Filiere extends Model
 
     public function departement()
     {
-        return $this->belongsTo(Departement::class);
+        return $this->belongsTo(Departement::class, 'departement_id', 'id');
     }
 
         public function niveaux()
         {
-            return $this->hasMany(Niveau::class);
+            return $this->hasMany(Niveau::class, 'filiere_id', 'id');
         }
 
         public function scopeWithDepartement($query)
@@ -37,12 +37,11 @@ class Filiere extends Model
     {
         static::deleting(function ($filiere) {
             foreach ($filiere->niveaux as $niveau) {
-                $niveau->deleted_by = 'system';
-                $niveau->save();
-
                 $niveau->delete();
             };
 
+            $filiere->statut = 'inactive';
+            $filiere->updated_by = 'system';
             $filiere->deleted_by = 'system';
             $filiere->save();
         });

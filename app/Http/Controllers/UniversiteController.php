@@ -136,9 +136,6 @@ class UniversiteController extends Controller
      */
     public function destroy(Universite $universite)
     {
-        // $universite->deleted_by = 'system'; // En attendant la gestion des utilisateurs
-        // $universite->save();
-
         $universite->delete();
         return redirect()->route('universites.index')->with('success', 'Université supprimée avec succès');
     }

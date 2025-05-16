@@ -19,7 +19,7 @@ class Niveau extends Model
 
     public function filiere()
     {
-        return $this->belongsTo(Filiere::class);
+        return $this->belongsTo(Filiere::class, 'filiere_id', 'id');
     }
     public function diplomes()
     {
@@ -43,6 +43,8 @@ class Niveau extends Model
         static::deleting(function ($niveau) {
             $niveau->diplomes()->detach();
 
+            $niveau->statut = 'inactive';
+            $niveau->updated_by = 'system';
             $niveau->deleted_by = 'system';
             $niveau->save();
         });

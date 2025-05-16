@@ -131,11 +131,6 @@ class DiplomeController extends Controller
      */
     public function destroy(Diplome $diplome)
     {
-        // $diplome->niveaux()->detach();
-
-        // $diplome->deleted_by = 'system'; // En attendant la gestion des utilisateurs
-        // $diplome->save();
-
         $diplome->delete();
         return redirect()->route('diplomes.index')->with('success', 'Diplôme supprimé avec succès!');
     }

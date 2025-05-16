@@ -7,11 +7,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="Chérif Ramzi Farès TAPSOBA">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }}</title>
-    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/png" />
+    <title>@yield('title',  config('app.name') )</title>
+    <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}" type="image/png" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('/dist/adminlte/css/adminlte.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('/dist/adminlte/css/adminlte.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('/dist/bootstrap//dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/bootstrap-icons/font/bootstrap-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
@@ -31,7 +31,7 @@
 
 <body class="d-flex flex-column min-vh-100 bg-light">
     <!-- Header -->
-    <header class="bg-success text-white py-3">
+    {{-- <header class="bg-success text-white py-3">
         <div class="container text-center">
             <p class="mb-0">
                 <i class="fas fa-info-circle me-2"></i>
@@ -47,7 +47,7 @@
                 </a>
             </p>
         </div>
-    </header>
+    </header> --}}
 
     <!-- Layout -->
     <div class="container-fluid">
@@ -101,6 +101,11 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="true">
                             <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-search me-2"></i> Trouver une filière
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('universites.index') }}" class="nav-link">
                                         <i class="fas fa-university me-2"></i> Universités

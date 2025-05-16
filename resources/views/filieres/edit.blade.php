@@ -1,3 +1,4 @@
+{{-- filieres/edit.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -12,7 +13,41 @@
 
                 <!-- Informations de base de la filière -->
                 <div class="form-group mb-3">
+                    <label for="universite_id" class="form-label">Université <span class="text-danger">*</span></label>
+                        <select class="form-select tomselect @error('universite_id') is-invalid @enderror" id="universite_id" name="universite_id" required>
+                            <option value="">Sélectionnez une université</option>
+                            @foreach($universites as $universite)
+                                <option value="{{ $universite->id }}" {{ (old('universite_id', $filiere->departement->ufr->universite_id) == $universite->id) ? 'selected' : '' }}>
+                                    {{ $universite->libelle }} ({{ $universite->abreviation }})
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('universite_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                </div>
 
+                <div class="form-group mb-3">
+                    <label for="ufr_id" class="form-label">UFR <span class="text-danger">*</span></label>
+                        <select class="form-select @error('ufr_id') is-invalid @enderror" id="ufr_id" name="ufr_id" required>
+                            <option value="">Sélectionnez d'abord une université</option>
+                        </select>
+                        @error('ufr_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="departement_id" class="form-label">Département <span class="text-danger">*</span></label>
+                        <select class="form-select @error('departement_id') is-invalid @enderror" id="departement_id" name="departement_id" required>
+                            <option value="">Sélectionnez d'abord une UFR</option>
+                        </select>
+                        @error('departement_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                </div>
+
+                <div class="form-group mb-3">
                     <label for="libelle">Libellé</label>
                     <input type="text" class="form-control @error('libelle') is-invalid @enderror" id="libelle" name="libelle" value="{{ old('libelle', $filiere->libelle) }}" required>
                     @error('libelle')
@@ -24,21 +59,6 @@
                     <label for="abreviation">Abréviation</label>
                     <input type="text" class="form-control @error('abreviation') is-invalid @enderror" id="abreviation" name="abreviation" value="{{ old('abreviation', $filiere->abreviation) }}">
                     @error('abreviation')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="departement_id">Département</label>
-                    <select class="form-control @error('departement_id') is-invalid @enderror" id="departement_id" name="departement_id" required>
-                        <option value="">Sélectionner un département</option>
-                        @foreach($departements as $departement)
-                            <option value="{{ $departement->id }}" {{ old('departement_id', $filiere->departement_id) == $departement->id ? 'selected' : '' }}>
-                                {{ $departement->libelle }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('departement_id')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
@@ -179,6 +199,84 @@
                 }
             });
         });
+
+        // Fonction pour charger les UFRs d'une université
+        function loadUfrs(universiteId, selectedUfrId = null) {
+            if (universiteId) {
+                $.ajax({
+                    url: '/api/universites/' + universiteId + '/ufrs',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#ufr_id').empty();
+                        $('#ufr_id').append('<option value="">Sélectionnez une UFR</option>');
+                        $.each(data, function(key, value) {
+                            $('#ufr_id').append('<option value="' + value.id + '">' + value.libelle + ' (' + value.abreviation + ')</option>');
+                        });
+
+                        // Sélectionner l'UFR si fourni
+                        if (selectedUfrId) {
+                            $('#ufr_id').val(selectedUfrId);
+                        }
+                    }
+                });
+            } else {
+                $('#ufr_id').empty();
+                $('#ufr_id').append('<option value="">Sélectionnez d\'abord une université</option>');
+            }
+        }
+
+        // Charger les UFRs lorsque l'université est sélectionnée
+        $('#universite_id').change(function() {
+            loadUfrs($(this).val());
+        });
+
+        // Chargement initial des UFRs pour l'université actuelle
+        var universiteId = $('#universite_id').val();
+        var ufrId = "{{ old('ufr_id', $filiere->departement->ufr_id) }}";
+
+        if (universiteId) {
+            loadUfrs(universiteId, ufrId);
+        }
+
+        // Fonction pour charger les Départements d'une UFR
+        function loadDepartements(ufrId, selectedDepartementId = null) {
+            if (ufrId) {
+                $.ajax({
+                    url: '/api/ufrs/' + ufrId + '/departements',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#departement_id').empty();
+                        $('#departement_id').append('<option value="">Sélectionnez un département</option>');
+                        $.each(data, function(key, value) {
+                            $('#departement_id').append('<option value="' + value.id + '">' + value.libelle + ' (' + value.abreviation + ')</option>');
+                        });
+
+                        // Sélectionner le Departement si fourni
+                        if (selectedDepartementId) {
+                            $('#departement_id').val(selectedDepartementId);
+                        }
+                    }
+                });
+            } else {
+                $('#departement_id').empty();
+                $('#departement_id').append('<option value="">Sélectionnez d\'abord une UFR</option>');
+            }
+        }
+
+        // Charger les Départements lorsque l'UFR' est sélectionnée
+        $('#ufr_id').change(function() {
+            loadDepartements($(this).val());
+        });
+
+        // Chargement initial des Départements pour l'UFR actuelle
+        var ufrId = $('#ufr_id').val();
+        var departementId = "{{ old('departement_id', $filiere->departement_id) }}";
+
+        if (universiteId) {
+            loadDepartements(ufrId, departementId);
+        }
     });
 </script>
 @endsection

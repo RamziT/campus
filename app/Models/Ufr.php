@@ -15,12 +15,12 @@ class UFR extends Model
 
     public function universite()
     {
-        return $this->belongsTo(Universite::class);
+        return $this->belongsTo(Universite::class, 'universite_id', 'id');
     }
 
     public function departements()
     {
-        return $this->hasMany(Departement::class);
+        return $this->hasMany(Departement::class, 'ufr_id', 'id');
     }
 
     public function scopeWithUniversite($query)
@@ -37,12 +37,11 @@ class UFR extends Model
     {
         static::deleting(function ($ufr) {
             foreach ($ufr->departements as $departement) {
-                $departement->deleted_by = 'system';
-                $departement->save();
-
                 $departement->delete();
             };
 
+            $ufr->statut = 'inactive';
+            $ufr->updated_by = 'system';
             $ufr->deleted_by = 'system';
             $ufr->save();
         });

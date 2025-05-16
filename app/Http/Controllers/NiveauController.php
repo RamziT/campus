@@ -131,11 +131,6 @@ class NiveauController extends Controller
      */
     public function destroy(Niveau $niveau)
     {
-        // $filiere->diplomes()->detach();
-
-        // $niveau->deleted_by = 'system';
-        // $niveau->save();
-
         $niveau->delete();
         return redirect()->route('niveaux.index')->with('success', 'Niveau supprimé avec succès!');
     }

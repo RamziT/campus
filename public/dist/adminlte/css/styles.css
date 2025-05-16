@@ -1,0 +1,91 @@
+.custom-sidebar{
+    background-color: #168F66;
+}
+
+.custom-sidebar .nav-item .nav-link{
+    color: white;
+}
+
+.custom-navbar{
+    background-color: #168F66;
+}
+
+.custom-navbar .nav-item .nav-link {
+    color: white;
+}
+
+.box-taches, .btn-annulation{
+    background-color: #ca3b1e !important; 
+    color: #FFFFFF;  
+}
+
+.box-taches div{
+    color: #FFFFFF;
+}
+
+.box-assignations, .btn-validation{
+    background-color: #24b988 !important;  
+    color: #FFFFFF;  
+}
+
+.box-assignations div{
+    color: #FFFFFF;    
+}
+
+.my-table-row-1 {
+    /* DGI */
+    background-color: #186a3b  !important; /* Vert forêt foncé */
+    border-color: #186a3b !important;
+}
+
+.my-table-row-2 {
+    /* DGA */
+    background-color: #1d8348 !important; /* Vert medium sea green */
+    border-color: #1d8348 !important;
+}
+
+.my-table-row-3 {
+    /* ITP */
+    background-color: #239b56 !important; /* Vert standard */
+    border-color: #239b56 !important;
+    color: #FFFFFF !important;
+}
+
+.my-table-row-4 {
+    /* Directeur */
+    background-color: #28b463 !important; /* Vert cadmium */
+    border-color: #28b463 !important;
+    color: #FFFFFF !important;
+}
+
+.my-table-row-5 {
+    /* Sous directeur */
+    background-color: #2ecc71 !important; /* Vert claire */
+    border-color: #2ecc71 !important;
+    color: #FFFFFF !important;
+}
+
+.my-table-row-6 {
+    /* Chef de service */
+    background-color: #58d68d !important; /* Vert pale */
+    border-color: #58d68d !important;
+    color: #FFFFFF !important;
+}
+
+.my-table-row-7 {
+    /* Sous chef de service */
+    background-color: #abebc6  !important; /* Vert très clair */
+    border-color: #abebc6  !important;
+    color: #FFFFFF !important;
+}
+
+
+.my-table-row-8 {
+    background-color: #bbf7d0 !important;
+    border-color: #bbf7d0 !important;
+}
+
+.bg-green-10 {
+    background-color: #f0fdf4 !important;
+    border-color: #f0fdf4 !important;
+}

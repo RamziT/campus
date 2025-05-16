@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UFR;
+use App\Models\Universite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,7 +27,8 @@ class UfrController extends Controller
      */
     public function create()
     {
-        return view('ufrs.create');
+        $universites = Universite::orderBy('libelle')->get();
+        return view('ufrs.create', compact('universites'));
     }
 
     /**
@@ -38,6 +40,7 @@ class UfrController extends Controller
     public function store(Request $request)
     {
        $validator = Validator::make($request->all(), [
+            'universite_id' => 'required|exists:universites,id',
             'libelle' => 'required',
             'abreviation' => 'nullable',
             'responsable_id' => 'nullable',
@@ -51,6 +54,7 @@ class UfrController extends Controller
         }
 
         $ufr = new UFR();
+        $ufr->universite_id = $request->input('universite_id');
         $ufr->libelle = $request->input('libelle');
         $ufr->abreviation = $request->input('abreviation');
         $ufr->responsable_id = $request->input('responsable_id');
@@ -82,7 +86,8 @@ class UfrController extends Controller
      */
     public function edit(UFR $ufr)
     {
-        return view('ufrs.edit', compact('ufr'));
+        $universites = Universite::orderBy('libelle')->get();
+        return view('ufrs.edit', compact('ufr', 'universites'));
     }
 
     /**
@@ -95,6 +100,7 @@ class UfrController extends Controller
     public function update(Request $request, UFR $ufr)
     {
         $validator = Validator::make($request->all(), [
+            'universite_id' => 'required|exists:universites,id',
             'libelle' => 'required',
             'abreviation' => 'nullable',
             'responsable_id' => 'nullable',
@@ -107,6 +113,7 @@ class UfrController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $ufr->universite_id = $request->input('universite_id');
         $ufr->libelle = $request->input('libelle');
         $ufr->abreviation = $request->input('abreviation');
         $ufr->responsable_id = $request->input('responsable_id');
@@ -127,9 +134,6 @@ class UfrController extends Controller
      */
     public function destroy(UFR $ufr)
     {
-        // $ufr->deleted_by = 'system';
-        // $ufr->save();
-
         $ufr->delete();
         return redirect()->route('ufrs.index')->with('success', 'UFR supprimée avec succès');
     }

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Departement;
 use App\Models\UFR;
+use App\Models\Universite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -20,14 +21,14 @@ class DepartementController extends Controller
 
     public function create()
     {
-        $ufrs = UFR::all();
-        return view('departements.create', compact('ufrs'));
+        $universites = Universite::where('statut', 'active')->orderBy('libelle', 'asc')->get();
+        return view('departements.create', compact('universites'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'ufr_id' => 'required|exists:ufrs,id',
+            'ufr_id' => 'required|exists:ufr,id',
             'libelle' => 'required|string|max:255',
             'abreviation' => 'nullable|string|max:255',
             'responsable_id' => 'nullable|string|max:255',
@@ -61,14 +62,14 @@ class DepartementController extends Controller
 
     public function edit(Departement $departement)
     {
-        $ufrs = UFR::all();
-        return view('departements.edit', compact('departement', 'ufrs'));
+        $universites = Universite::where('statut', 'active')->orderBy('libelle', 'asc')->get();
+        return view('departements.edit', compact('departement', 'universites'));
     }
 
     public function update(Request $request, Departement $departement)
     {
         $validator = Validator::make($request->all(), [
-            'ufr_id' => 'required|exists:ufrs,id',
+            'ufr_id' => 'required|exists:ufr,id',
             'libelle' => 'required|string|max:255',
             'abreviation' => 'nullable|string|max:255',
             'responsable_id' => 'nullable|string|max:255',
@@ -96,16 +97,6 @@ class DepartementController extends Controller
 
     public function destroy(Departement $departement)
     {
-        // $departement->filieres()->each(function ($filiere) {
-        //     $filiere->deleted_by = 'system'; // En attendant la gestion des utilisateurs
-        //     $filiere->save();
-
-        //     $filiere->delete();
-        // });
-
-        // $departement->deleted_by = 'system'; // En attendant la gestion des utilisateurs
-        // $departement->save();
-
         $departement->delete();
         return redirect()->route('departements.index')->with('success', 'Département supprimé avec succès');
     }

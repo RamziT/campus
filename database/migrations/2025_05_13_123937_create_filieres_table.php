@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
 
-            $table->unique(['libelle', 'departement_id']);
-            $table->unique(['abreviation', 'departement_id']);
+            $table->unique(['libelle', 'departement_id', 'statut']);
+            $table->unique(['abreviation', 'departement_id', 'statut']);
         });
     }
 

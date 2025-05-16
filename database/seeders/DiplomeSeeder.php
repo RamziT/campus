@@ -30,7 +30,7 @@ class DiplomeSeeder extends Seeder
             [
                 'libelle' => 'Baccaulérat',
                 'abreviation' => 'BAC',
-                'serie' => 'A',
+                'serie' => 'A4',
                 'specialite' => 'Littéraire',
                 'option' => null
             ],
