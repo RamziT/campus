@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('diplomes', function (Blueprint $table) {
             $table->id();
-            $table->enum('libelle', ['Baccaulérat', 'Licence', 'Licence Professionnelle', 'Master', 'Doctorant']);
+            $table->enum('libelle', ['Baccaulérat', 'Licence', 'Licence Professionnelle', 'Master', 'Doctorat']);
             $table->string('abreviation')->nullable();
             $table->string('serie')->nullable();
             $table->string('specialite')->nullable();

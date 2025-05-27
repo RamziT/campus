@@ -70,7 +70,7 @@ class DiplomeSeeder extends Seeder
                 'option' => 'Droit des Affaires'
             ],
             [
-                'libelle' => 'Doctorant',
+                'libelle' => 'Doctorat',
                 'abreviation' => 'PHD',
                 'serie' => null,
                 'specialite' => 'Informatique',
