@@ -7,11 +7,12 @@
     <meta name="keywords" content="">
     <meta name="author" content="Chérif Ramzi Farès TAPSOBA">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title',  config('app.name') )</title>
+    <title>@yield('title', config('app.name') )</title>
     <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}" type="image/png" />
 
     <!-- CSS -->
-    {{-- <link rel="stylesheet" href="{{ asset('/dist/adminlte/css/adminlte.min.css') }}"> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('/dist/adminlte/css/adminlte.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('/dist/bootstrap//dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/bootstrap-icons/font/bootstrap-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
@@ -63,8 +64,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <a href="{{ url('/') }}" class="brand-link">
-                                    <img src="{{ asset('img/logo.jpg') }}" alt="Logo" class="img-fluid col-3" >
-                                </a>
+                            <img src="{{ asset('img/logo.jpg') }}" alt="Logo" class="img-fluid col-3">
+                        </a>
                         {{-- <ul class="navbar-nav ms-auto">
                             @auth
                             <li class="nav-item">
@@ -77,7 +78,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Profil</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
+                                    </li>
                                 </ul>
                             </li>
                             @else
@@ -131,6 +133,23 @@
                                         <i class="fas fa-layer-group me-2"></i> Niveaux
                                     </a>
                                 </li>
+                                {{-- <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-bell"></i> Cours <i class="right fas fa-angle-left"></i>
+                                    </a>
+                                    <ul class="nav nav-treeview ms-3">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="fas fa-inbox nav-icon"></i> UE
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="fas fa-paper-plane nav-icon"></i> Matières
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a href="{{ route('diplomes.index') }}" class="nav-link">
                                         <i class="fas fa-certificate me-2"></i> Diplômes
@@ -169,14 +188,16 @@
     </footer>
 
     <!-- Scripts -->
-     <script src="{{ asset('/dist/jquery//dist/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/jquery//dist/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/dist/bootstrap//dist/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('/dist/adminlte/js/adminlte.js') }}"></script>
 
     <script src="{{ asset('/dist/datatables.net/js/dataTables.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/dist/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/dist/datatables.net-buttons/js/dataTables.buttons.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}" type="text/javascript">
+    </script>
+    <script src="{{ asset('/dist/datatables.net-buttons/js/dataTables.buttons.min.js') }}" type="text/javascript">
+    </script>
     <script src="{{ asset('/dist/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}" type="text/javascript">
     </script>
     <script src="{{ asset('/dist/datatables.net-buttons/js/buttons.html5.min.js') }}" type="text/javascript"></script>
