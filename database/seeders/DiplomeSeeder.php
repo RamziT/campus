@@ -14,21 +14,21 @@ class DiplomeSeeder extends Seeder
     {
         $diplomes = [
             [
-                'libelle' => 'Baccaulérat',
+                'libelle' => 'Baccalauréat',
                 'abreviation' => 'BAC',
                 'serie' => 'C',
                 'specialite' => 'Sciences',
                 'option' => null
             ],
             [
-                'libelle' => 'Baccaulérat',
+                'libelle' => 'Baccalauréat',
                 'abreviation' => 'BAC',
                 'serie' => 'D',
                 'specialite' => 'Sciences de la Vie et de la Terre',
                 'option' => null
             ],
             [
-                'libelle' => 'Baccaulérat',
+                'libelle' => 'Baccalauréat',
                 'abreviation' => 'BAC',
                 'serie' => 'A4',
                 'specialite' => 'Littéraire',

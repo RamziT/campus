@@ -4,21 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Diplome extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LogsActivity;
 
     protected $table = 'diplomes';
-
-    protected $guarded = [ 'id' ];
+    protected $guarded = ['id'];
 
     public function niveaux()
-        {
-            return $this->belongsToMany(Niveau::class, 'niveaux_diplomes', 'diplome_id', 'niveau_id');
-        }
+    {
+        return $this->belongsToMany(Niveau::class, 'niveaux_diplomes', 'diplome_id', 'niveau_id')
+        ->with([ 'filiere' ]);
+    }
 
-        public function scopeWithNiveaux($query)
+    public function scopeWithNiveaux($query)
     {
         return $query->with('niveaux');
     }
@@ -33,5 +35,13 @@ class Diplome extends Model
             $diplome->deleted_by = 'system';
             $diplome->save();
         });
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logAll()
+            ->logOnlyDirty()
+            ->useLogName('diplome');
     }
 }

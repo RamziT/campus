@@ -65,7 +65,7 @@
                         <a href="{{ url('/') }}" class="brand-link">
                                     <img src="{{ asset('img/logo.jpg') }}" alt="Logo" class="img-fluid col-3" >
                                 </a>
-                        <ul class="navbar-nav ms-auto">
+                        {{-- <ul class="navbar-nav ms-auto">
                             @auth
                             <li class="nav-item">
                                 <a href="{{ url('/') }}" class="nav-link">Accueil</a>
@@ -88,7 +88,7 @@
                                 <a href="{{ route('register') }}" class="nav-link">Inscription</a>
                             </li>
                             @endauth
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </nav>
@@ -101,11 +101,11 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="true">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="fas fa-search me-2"></i> Trouver une filière
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a href="{{ route('universites.index') }}" class="nav-link">
                                         <i class="fas fa-university me-2"></i> Universités
@@ -136,7 +136,7 @@
                                         <i class="fas fa-certificate me-2"></i> Diplômes
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('logout') }}" class="nav-link"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
@@ -145,7 +145,7 @@
                             </ul>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
-                            </form>
+                            </form> --}}
                     </nav>
                 </div>
             </aside>
