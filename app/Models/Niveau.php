@@ -23,6 +23,7 @@ class Niveau extends Model
     {
         return $this->belongsTo(Filiere::class, 'filiere_id', 'id');
     }
+
     public function diplomes()
     {
         return $this->belongsToMany(Diplome::class, 'niveaux_diplomes', 'niveau_id', 'diplome_id')

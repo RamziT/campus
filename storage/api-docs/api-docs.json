@@ -1,0 +1,2290 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Campus Faso - Gestion du LMD",
+        "description": "Documentation générée par Swagger",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/departements": {
+            "get": {
+                "tags": [
+                    "Départements"
+                ],
+                "summary": "Récupérer la liste de tous les départements",
+                "operationId": "a2bb1528593d15a3848be4a8e33d1f7f",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "ufr_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "MATH"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "math@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/departements/{id}": {
+            "get": {
+                "tags": [
+                    "Départements"
+                ],
+                "summary": "Récupérer un département par son ID",
+                "operationId": "7a78d77a54eb47ccd7eb6e2ddd12ba87",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du département",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "ufr_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "MATH"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "math@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Département non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/departements/{departement}/filieres": {
+            "get": {
+                "tags": [
+                    "Départements"
+                ],
+                "summary": "Récupérer la liste des filières appartenant à un département",
+                "operationId": "10c6b66fc687b3a986f40dd72c364e08",
+                "parameters": [
+                    {
+                        "name": "departement",
+                        "in": "path",
+                        "description": "ID du département",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "INFO"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12346"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 66"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "info@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Département non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/departements/{departement}/niveaux": {
+            "get": {
+                "tags": [
+                    "Départements"
+                ],
+                "summary": "Récupérer la liste des niveaux appartenant à un département",
+                "operationId": "f564c23891ecc5edd85316aead44cbd4",
+                "parameters": [
+                    {
+                        "name": "departement",
+                        "in": "path",
+                        "description": "ID du département",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Département non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/departements/{departement}/niveaux-accessibles": {
+            "get": {
+                "tags": [
+                    "Départements"
+                ],
+                "summary": "Récupérer la liste des niveaux accessibles appartenant à un département",
+                "operationId": "603b0e0a58955f055ca8a6971c4f8b1b",
+                "parameters": [
+                    {
+                        "name": "departement",
+                        "in": "path",
+                        "description": "ID du département",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Département non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/diplomes": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer la liste de tous les diplômes",
+                "operationId": "8a8291ea1efb163f964bfa27fd92061c",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "BAC"
+                                            },
+                                            "serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "option": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/diplomes/{id}": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer un diplôme par son ID",
+                "operationId": "90fc5a2a2fe93c4cabea1fea14f895d2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du diplôme",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "libelle": {
+                                            "type": "string",
+                                            "example": "Baccalauréat"
+                                        },
+                                        "abreviation": {
+                                            "type": "string",
+                                            "example": "BAC"
+                                        },
+                                        "serie": {
+                                            "type": "string",
+                                            "example": "C"
+                                        },
+                                        "specialite": {
+                                            "type": "string",
+                                            "example": "Mathématiques"
+                                        },
+                                        "option": {
+                                            "type": "string",
+                                            "example": "Sciences"
+                                        },
+                                        "statut": {
+                                            "type": "string",
+                                            "example": "active"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Diplôme non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/diplomes/{diplome}/filieres": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer les filières accessibles pour un diplôme",
+                "operationId": "287d93d8409549fc5e8ef5479c95097c",
+                "parameters": [
+                    {
+                        "name": "diplome",
+                        "in": "path",
+                        "description": "ID du diplôme",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "diplome_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "diplome_libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "diplome_serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "diplome_option": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "diplome_specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "ufr_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "ufr_libelle": {
+                                                "type": "string",
+                                                "example": "UFR Sciences et Techniques"
+                                            },
+                                            "universite_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "universite_libelle": {
+                                                "type": "string",
+                                                "example": "Université de Ouagadougou"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Diplôme non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/diplomes/{diplome}/niveaux": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer les niveaux accessibles avec un diplôme",
+                "operationId": "d0027ae55da12152da51bc48927a1815",
+                "parameters": [
+                    {
+                        "name": "diplome",
+                        "in": "path",
+                        "description": "ID du diplôme",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Diplôme non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/baccalaureats": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer les baccalauréats",
+                "operationId": "fb423bd868468e51ab9cd860ea36bfe5",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "intitule": {
+                                                "type": "string",
+                                                "example": "BAC C"
+                                            },
+                                            "specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/diplomes/types/{type}": {
+            "get": {
+                "tags": [
+                    "Diplômes"
+                ],
+                "summary": "Récupérer les diplômes par type",
+                "operationId": "864a2edaa075253797d681ce7d548b29",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "Type de diplôme (Baccalauréat, Licence, Master, etc.)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "BAC"
+                                            },
+                                            "serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "option": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer la liste de toutes les filières",
+                "operationId": "e342a1c225f63ad5ded6b1b2fda7b9fb",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "INFO"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "info@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres/{id}": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer une filière par son ID",
+                "operationId": "1ac8a53cc39b0ea843ea62b5331c8142",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "INFO"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "info@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Filière non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres/{filiere}/niveaux": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer la liste des niveaux appartenant à une filière",
+                "operationId": "c75c57c4ee6fc5bdb6117600a75af2b8",
+                "parameters": [
+                    {
+                        "name": "filiere",
+                        "in": "path",
+                        "description": "ID de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Filière non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres/{filiere}/niveaux-accessibles": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer la liste des niveaux accessibles appartenant à une filière",
+                "operationId": "1629b4944cdf423da43f4f81f64b8d03",
+                "parameters": [
+                    {
+                        "name": "filiere",
+                        "in": "path",
+                        "description": "ID de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Filière non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres/{filiere}/diplomes": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer la liste des diplômes appartenant à une filière",
+                "operationId": "464087ccc2fd36a534ca28b212a7d3b4",
+                "parameters": [
+                    {
+                        "name": "filiere",
+                        "in": "path",
+                        "description": "ID de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "BAC"
+                                            },
+                                            "serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "option": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "specialite": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Filière non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer la liste de tous les niveaux",
+                "operationId": "667f5a247cdd84268551776de804cb74",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux/{id}": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer un niveau par son ID",
+                "operationId": "49cddd711f9136a5cc6e92d141a65bd2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du niveau",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "libelle": {
+                                            "type": "string",
+                                            "example": "Licence 1"
+                                        },
+                                        "abreviation": {
+                                            "type": "string",
+                                            "example": "L1"
+                                        },
+                                        "filiere_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "accessible": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "statut": {
+                                            "type": "string",
+                                            "example": "active"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Niveau non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux/accessibles": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer la liste des niveaux accessibles",
+                "operationId": "b00d2606eeef1fa51f96901b771444d7",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux/{niveau}/diplomes": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer la liste des diplômes requis pour un niveau",
+                "operationId": "836666beaa03ddd07c364840fa2438e3",
+                "parameters": [
+                    {
+                        "name": "niveau",
+                        "in": "path",
+                        "description": "ID du niveau",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "BAC"
+                                            },
+                                            "serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "option": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Niveau non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux/filiere/{filiere_id}": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer les niveaux d'une filière",
+                "operationId": "733341a683a0094e97bd7c764eab9064",
+                "parameters": [
+                    {
+                        "name": "filiere_id",
+                        "in": "path",
+                        "description": "ID de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer la liste de toutes les UFR",
+                "operationId": "388cfebe285d5023451b2a218c2e14f5",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "universite_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "UFR Sciences et Techniques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "UFR/ST"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "ufrst@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs/{id}": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer une UFR par son ID",
+                "operationId": "714a3611a6fec515a59688f7a008d844",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'UFR",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "universite_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "UFR Sciences et Techniques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "UFR/ST"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 65"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "ufrst@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "UFR non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs/{ufr}/departements": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer la liste des départements appartenant à une UFR",
+                "operationId": "4a27bddad3a633ea2473ed8a4bb4c25d",
+                "parameters": [
+                    {
+                        "name": "ufr",
+                        "in": "path",
+                        "description": "ID de l'UFR",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "ufr_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "MATH"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12346"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 66"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "math@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "UFR non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs/{ufr}/filieres": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer la liste des filières appartenant à une UFR",
+                "operationId": "e242b0c2489b6b229d9b8276fefa9938",
+                "parameters": [
+                    {
+                        "name": "ufr",
+                        "in": "path",
+                        "description": "ID de l'UFR",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "INFO"
+                                            },
+                                            "responsable_id": {
+                                                "type": "string",
+                                                "example": "12347"
+                                            },
+                                            "contact": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 67"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "info@uo.bf"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "UFR non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs/{ufr}/niveaux": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer la liste des niveaux appartenant à une UFR",
+                "operationId": "d4904c6b55c274367ef024a22c406d0d",
+                "parameters": [
+                    {
+                        "name": "ufr",
+                        "in": "path",
+                        "description": "ID de l'UFR",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "UFR non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/ufrs/{ufr}/niveaux-accessibles": {
+            "get": {
+                "tags": [
+                    "UFR"
+                ],
+                "summary": "Récupérer la liste des niveaux accessibles appartenant à une UFR",
+                "operationId": "411620ef5f8ce5789ff1549dd38df404",
+                "parameters": [
+                    {
+                        "name": "ufr",
+                        "in": "path",
+                        "description": "ID de l'UFR",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "UFR non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste de toutes les universités",
+                "operationId": "17415d2a404d6c60951e07b01d66e0aa",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Université de Ouagadougou"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "UO"
+                                            },
+                                            "ville": {
+                                                "type": "string",
+                                                "example": "Ouagadougou"
+                                            },
+                                            "telephone": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 64"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "contact@uo.bf"
+                                            },
+                                            "site_web": {
+                                                "type": "string",
+                                                "example": "https://www.uo.bf"
+                                            },
+                                            "adresse": {
+                                                "type": "string",
+                                                "example": "03 BP 7021 Ouagadougou 03"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{id}": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer une université par son ID",
+                "operationId": "d2af1d36b8b7cbc8a62e3ac15efb9c4b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Université de Ouagadougou"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "UO"
+                                            },
+                                            "ville": {
+                                                "type": "string",
+                                                "example": "Ouagadougou"
+                                            },
+                                            "telephone": {
+                                                "type": "string",
+                                                "example": "+226 25 30 70 64"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "contact@uo.bf"
+                                            },
+                                            "site_web": {
+                                                "type": "string",
+                                                "example": "https://www.uo.bf"
+                                            },
+                                            "adresse": {
+                                                "type": "string",
+                                                "example": "03 BP 7021 Ouagadougou 03"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{universite}/ufrs": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste des UFRs appartenant à une université",
+                "operationId": "a878da066ccdbc2cdeb29520f07d97ed",
+                "parameters": [
+                    {
+                        "name": "universite",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "UFR Sciences et Techniques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "UFR/ST"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{universite}/departements": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste des départements appartenant à une université",
+                "operationId": "c6685ebed1d20362dd658db83e7a11b4",
+                "parameters": [
+                    {
+                        "name": "universite",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "MATH"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{universite}/filieres": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste des filières appartenant à une université",
+                "operationId": "cea6335abf9a87b538ce50dec5e22bfa",
+                "parameters": [
+                    {
+                        "name": "universite",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "INFO"
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{universite}/niveaux": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste des niveaux appartenant à une université",
+                "operationId": "1209c8dee755528c77a616b3a4edcc8d",
+                "parameters": [
+                    {
+                        "name": "universite",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/universites/{universite}/niveaux-accessibles": {
+            "get": {
+                "tags": [
+                    "Universités"
+                ],
+                "summary": "Récupérer la liste des niveaux accessibles appartenant à une université",
+                "operationId": "22cdc89c4593ed6889113a42665ea4a5",
+                "parameters": [
+                    {
+                        "name": "universite",
+                        "in": "path",
+                        "description": "ID de l'université",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "libelle": {
+                                                "type": "string",
+                                                "example": "Licence 1"
+                                            },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "L1"
+                                            },
+                                            "accessible": {
+                                                "type": "boolean",
+                                                "example": true
+                                            },
+                                            "statut": {
+                                                "type": "string",
+                                                "example": "active"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Université non trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Universités",
+            "description": "Opérations liées aux Universités"
+        },
+        {
+            "name": "UFR",
+            "description": "Opérations liées aux Unités de Formation et de Recherche (UFR)"
+        },
+        {
+            "name": "Départements",
+            "description": "Opérations liées aux Départements"
+        },
+        {
+            "name": "Filières",
+            "description": "Opérations liées aux Filières"
+        },
+        {
+            "name": "Niveaux",
+            "description": "Opérations liées aux Niveaux"
+        },
+        {
+            "name": "Diplômes",
+            "description": "Opérations liées aux Diplômes"
+        }
+    ]
+}

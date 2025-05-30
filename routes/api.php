@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApiDepartementController;
 use App\Http\Controllers\ApiDiplomeController;
+use App\Http\Controllers\ApiFiliereController;
+use App\Http\Controllers\ApiNiveauController;
+use App\Http\Controllers\ApiUfrController;
+use App\Http\Controllers\ApiUniversiteController;
 use App\Models\Departement;
 use App\Models\Diplome;
 use App\Models\Filiere;
@@ -14,147 +19,80 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Universites routes
+// Universités routes
 Route::prefix('universites')->group(function () {
-    // Renvoie la liste de toutes les universités
-    Route::get('/', function (Universite $universite) {
-        return $universite->where('statut', 'active')->get();
-    });
-
-    // Renvoie une université par son ID
-    Route::get('/{id}', function (Universite $universite, $id) {
-        return $universite->where('id', $id)->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des UFRs appartenant à une université
-    Route::get('/{universite}/ufrs', function (Universite $universite) {
-        return $universite->ufrs()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des départements appartenant à une université
-    Route::get('/{universite}/departements', function (Universite $universite) {
-        return $universite->departements()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des filières appartenant à une université
-    Route::get('/{universite}/filieres', function (Universite $universite) {
-        return $universite->filieres()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux appartenant à une université
-    Route::get('/{universite}/niveaux', function (Universite $universite) {
-        return $universite->niveaux()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux accessibles appartenant à une université
-    Route::get('/{universite}/niveaux-accessibles', function (Universite $universite) {
-        return $universite->niveaux()->where('statut', 'active')->where('accessible', true)->get();
-    });
+    Route::get('/', [ApiUniversiteController::class, 'index']);
+    Route::get('/{id}', [ApiUniversiteController::class, 'show']);
+    Route::get('/{universite}/ufrs', [ApiUniversiteController::class, 'getUfrs']);
+    Route::get('/{universite}/departements', [ApiUniversiteController::class, 'getDepartements']);
+    Route::get('/{universite}/filieres', [ApiUniversiteController::class, 'getFilieres']);
+    Route::get('/{universite}/niveaux', [ApiUniversiteController::class, 'getNiveaux']);
+    Route::get('/{universite}/niveaux-accessibles', [ApiUniversiteController::class, 'getNiveauxAccessibles']);
 });
 
-// UFRs routes
+// UFR routes
 Route::prefix('ufrs')->group(function () {
-    // Renvoie la liste de toutes les UFRs
-    Route::get('/', function (UFR $ufr) {
-        return $ufr->where('statut', 'active')->get();
-    });
-
-    // Renvoie une UFR par son ID
-    Route::get('/{id}', function (UFR $ufr, $id) {
-        return $ufr->where('id', $id)->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des départements appartenant à une UFR
-    Route::get('/{ufr}/departements', function (UFR $ufr) {
-        return $ufr->departements()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des filières appartenant à une UFR
-    Route::get('/{ufr}/filieres', function (UFR $ufr) {
-        return $ufr->filieres()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux appartenant à une UFR
-    Route::get('/{ufr}/niveaux', function (UFR $ufr) {
-        return $ufr->niveaux()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux accessibles appartenant à une UFR
-    Route::get('/{ufr}/niveaux-accessibles', function (UFR $ufr) {
-        return $ufr->niveaux()->where('statut', 'active')->where('accessible', true)->get();
-    });
+    Route::get('/', [ApiUfrController::class, 'index']);
+    Route::get('/{id}', [ApiUfrController::class, 'show']);
+    Route::get('/{ufr}/departements', [ApiUfrController::class, 'getDepartements']);
+    Route::get('/{ufr}/filieres', [ApiUfrController::class, 'getFilieres']);
+    Route::get('/{ufr}/niveaux', [ApiUfrController::class, 'getNiveaux']);
+    Route::get('/{ufr}/niveaux-accessibles', [ApiUfrController::class, 'getNiveauxAccessibles']);
 });
 
-// Departements routes
+// Départements routes
 Route::prefix('departements')->group(function () {
-    // Renvoie la liste de tous les départements
-    Route::get('/', function (Departement $departement) {
-        return $departement->where('statut', 'active')->get();
-    });
-
-    // Renvoie un département par son ID
-    Route::get('/{id}', function (Departement $departement, $id) {
-        return $departement->where('id', $id)->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des filières appartenant à un département
-    Route::get('/{departement}/filieres', function (Departement $departement) {
-        return $departement->filieres()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux appartenant à un département
-    Route::get('/{departement}/niveaux', function (Departement $departement) {
-        return $departement->niveaux()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux accessibles appartenant à un département
-    Route::get('/{departement}/niveaux-accessibles', function (Departement $departement) {
-        return $departement->niveaux()->where('statut', 'active')->where('accessible', true)->get();
-    });
+    Route::get('/', [ApiDepartementController::class, 'index']);
+    Route::get('/{id}', [ApiDepartementController::class, 'show']);
+    Route::get('/{departement}/filieres', [ApiDepartementController::class, 'getFilieres']);
+    Route::get('/{departement}/niveaux', [ApiDepartementController::class, 'getNiveaux']);
+    Route::get('/{departement}/niveaux-accessibles', [ApiDepartementController::class, 'getNiveauxAccessibles']);
 });
 
 // Filieres routes
 Route::prefix('filieres')->group(function () {
-    // Renvoie la liste de toutes les filières
-    Route::get('/', function (Filiere $filiere) {
-        return $filiere->where('statut', 'active')->get();
-    });
-
-    // Renvoie une filière par son ID
-    Route::get('/{id}', function (Filiere $filiere, $id) {
-        return $filiere->where('id', $id)->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux appartenant à une filière
-    Route::get('/{filiere}/niveaux', function (Filiere $filiere) {
-        return $filiere->niveaux()->where('statut', 'active')->get();
-    });
-
-    // Renvoie la liste des niveaux accessibles appartenant à une filière
-    Route::get('/{filiere}/niveaux-accessibles', function (Filiere $filiere) {
-        return $filiere->niveaux()->where('statut', 'active')->where('accessible', true)->get();
-    });
-
-    // Renvoie la liste des diplômes appartenant à une filière
-    Route::get('/{filiere}/diplomes', function (Filiere $filiere) {
-        return $filiere->diplomes()->where('statut', 'active')->get();
-    });
+    Route::get('/', [ApiFiliereController::class, 'index']);
+    Route::get('/{id}', [ApiFiliereController::class, 'show']);
+    Route::get('/{filiere}/niveaux', [ApiFiliereController::class, 'getNiveaux']);
+    Route::get('/{filiere}/niveaux-accessibles', [ApiFiliereController::class, 'getNiveauxAccessibles']);
+    Route::get('/{filiere}/diplomes', [ApiFiliereController::class, 'getDiplomes']);
 });
 
-// Diplomes routes
+// Routes pour les Niveaux
+Route::prefix('niveaux')->group(function () {
+    // Récupérer tous les niveaux
+    Route::get('/', [ApiNiveauController::class, 'index']);
+
+    // Récupérer les niveaux accessibles
+    Route::get('/accessibles', [ApiNiveauController::class, 'getAccessibles']);
+
+    // Récupérer les niveaux d'une filière
+    Route::get('/filiere/{filiere_id}', [ApiNiveauController::class, 'getByFiliere']);
+
+    // Récupérer un niveau par son ID
+    Route::get('/{id}', [ApiNiveauController::class, 'show']);
+
+    // Récupérer les diplômes requis pour un niveau
+    Route::get('/{niveau}/diplomes', [ApiNiveauController::class, 'getDiplomes']);
+});
+
+// Routes pour les Diplômes
 Route::prefix('diplomes')->group(function () {
-    // Renvoie la liste de tous les diplômes
-    Route::get('/', function (Diplome $diplome) {
-        return $diplome->where('statut', 'active')->get();
-    });
+    // Récupérer tous les diplômes
+    Route::get('/', [ApiDiplomeController::class, 'index']);
 
-    // Renvoie un diplôme par son ID
-    Route::get('/{id}', function (Diplome $diplome, $id) {
-        return $diplome->where('id', $id)->where('statut', 'active')->get();
-    });
+    // Récupérer les diplômes par type
+    Route::get('/types/{type}', [ApiDiplomeController::class, 'getByType']);
 
+    // Récupérer un diplôme par son ID
+    Route::get('/{id}', [ApiDiplomeController::class, 'show']);
+
+    // Récupérer les filières accessibles avec un diplôme
     Route::get('/{diplome}/filieres', [ApiDiplomeController::class, 'getFilieresAccessibles']);
 
+    // Récupérer les niveaux accessibles avec un diplôme
+    Route::get('/{diplome}/niveaux', [ApiDiplomeController::class, 'getNiveaux']);
 });
 
-   Route::get('baccalaureats', [ApiDiplomeController::class, 'getBaccalaureats']);
+// Route spéciale pour les baccalauréats
+Route::get('baccalaureats', [ApiDiplomeController::class, 'getBaccalaureats']);

@@ -134,4 +134,5 @@ class DiplomeController extends Controller
         $diplome->delete();
         return redirect()->route('diplomes.index')->with('success', 'Diplôme supprimé avec succès!');
     }
+
 }
