@@ -227,6 +227,8 @@ class ApiDiplomeController extends Controller
      *                 type="object",
      *                 @OA\Property(property="id", type="integer", example=1),
      *                 @OA\Property(property="intitule", type="string", example="BAC C"),
+     *                 @OA\Property(property="abreviation", type="string", example="C"),
+     *                 @OA\Property(property="serie", type="string", example="C"),
      *                 @OA\Property(property="specialite", type="string", example="Mathématiques")
      *             )
      *         )
@@ -242,7 +244,7 @@ class ApiDiplomeController extends Controller
         $baccalaureats = Diplome::where('libelle', 'like', '%Baccalauréat%')
             ->where('statut', 'active')
             ->orderBy('serie', 'asc')
-            ->select('id', DB::raw("CONCAT(abreviation, ' ', serie) as intitule"), 'specialite')
+            ->select('id', DB::raw("CONCAT(abreviation, ' ', serie) as intitule"), 'abreviation', 'serie', 'specialite')
             ->get();
 
         return response()->json($baccalaureats);
@@ -293,4 +295,5 @@ class ApiDiplomeController extends Controller
 
         return response()->json($diplomes);
     }
+
 }

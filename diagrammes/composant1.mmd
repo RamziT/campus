@@ -1,0 +1,77 @@
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'fontSize': '18px',
+      'fontFamily': 'Arial',
+      'primaryTextColor': '#000',
+      'primaryColor': '#fff',
+      'lineColor': '#333'
+    }
+  }
+}%%
+
+flowchart TB
+  subgraph Frontend["Frontend"]
+        UI["Interface Utilisateur Web"]
+        Mobile["Application Mobile"]
+  end
+
+  subgraph subGraph1["API Gateway"]
+        APIGW["API Gateway"]
+  end
+
+  subgraph Microservices["Microservices"]
+        MS_INE["Microservice<br>Gestion des comptes INE"]
+        MS_Inscription["Microservice<br>Gestion des orientations et inscriptions administratives"]
+        MS_Academic["Microservice<br>Gestion académiques et administratives"]
+        MS_Payments["Microservice<br>Gestion des allocations"]
+  end
+
+  subgraph subGraph4["Stockage de données"]
+        DB_INE[("Base de données<br>Comptes INE")]
+        DB_Inscription[("Base de données<br>Inscriptions")]
+        DB_Academic[("Base de données<br>Académique")]
+        DB_Payments[("Base de données<br>Allocations")]
+  end
+
+  %% Relations Frontend -> API Gateway
+  UI --> APIGW
+  Mobile --> APIGW
+
+  %% Relations API Gateway -> Microservices
+  APIGW -->|"Route"| MS_INE
+  APIGW -->|"Route"| MS_Inscription
+  APIGW -->|"Route"| MS_Academic
+  APIGW -->|"Route"| MS_Payments
+
+  %% Relations Microservices -> API Gateway
+  MS_INE -.->|"Requête"| APIGW
+  MS_Inscription -.->|"Requête"| APIGW
+  MS_Academic -.->|"Requête"| APIGW
+  MS_Payments -.->|"Requête"| APIGW
+
+  %% Relations Microservices -> Bases de données
+  MS_INE -->|"CRUD"| DB_INE
+  MS_Inscription -->|"CRUD"| DB_Inscription
+  MS_Academic -->|"CRUD"| DB_Academic
+  MS_Payments -->|"CRUD"| DB_Payments
+
+  %% Styles personnalisés
+  UI:::frontend
+  Mobile:::frontend
+  APIGW:::gateway
+  MS_INE:::microservice
+  MS_Inscription:::microservice
+  MS_Academic:::microservice
+  MS_Payments:::microservice
+  DB_INE:::database
+  DB_Inscription:::database
+  DB_Academic:::database
+  DB_Payments:::database
+
+  %% Classes de style
+  classDef frontend fill:#e6ccff,stroke:#5500cc,stroke-width:2px,color:#333,font-weight:bold
+  classDef gateway fill:#ff99cc,stroke:#cc0066,stroke-width:3px,color:#333,font-weight:bold
+  classDef microservice fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#333,font-weight:bold
+  classDef database fill:#99ff99,stroke:#009900,stroke-width:2px,color:#333,font-weight:bold

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Niveau;
+use App\Models\Diplome;
 
 class ApiNiveauController extends Controller
 {
@@ -207,5 +208,76 @@ class ApiNiveauController extends Controller
             ->orderBy('libelle')
             ->get();
         return response()->json($niveaux);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/niveaux-accessibles",
+     *     summary="Récupérer les niveaux accessibles",
+     *     tags={"Niveaux"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Réponse de succès",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(property="diplome_id", type="integer", example=1),
+     *                 @OA\Property(property="diplome_libelle", type="string", example="Baccalauréat"),
+     *                 @OA\Property(property="diplome_serie", type="string", example="C"),
+     *                 @OA\Property(property="diplome_option", type="string", example="Sciences"),
+     *                 @OA\Property(property="diplome_specialite", type="string", example="Mathématiques"),
+     *                 @OA\Property(property="filiere_id", type="integer", example=1),
+     *                 @OA\Property(property="filiere_libelle", type="string", example="Informatique"),
+     *                 @OA\Property(property="departement_id", type="integer", example=1),
+     *                 @OA\Property(property="departement_libelle", type="string", example="Département de Mathématiques"),
+     *                 @OA\Property(property="ufr_id", type="integer", example=1),
+     *                 @OA\Property(property="ufr_libelle", type="string", example="UFR Sciences et Techniques"),
+     *                 @OA\Property(property="universite_id", type="integer", example=1),
+     *                 @OA\Property(property="universite_libelle", type="string", example="Université de Ouagadougou")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Niveaux non trouvés"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erreur serveur"
+     *     )
+     * )
+     */
+    public function getAllNiveauxAccessibles()
+    {
+        $filieres_accessibles = Diplome::join('niveaux_diplomes', 'diplomes.id', '=', 'niveaux_diplomes.diplome_id')
+            ->join('niveaux', 'niveaux_diplomes.niveau_id', '=', 'niveaux.id')
+            ->join('filieres', 'niveaux.filiere_id', '=', 'filieres.id')
+            ->join('departements', 'filieres.departement_id', '=', 'departements.id')
+            ->join('ufr', 'departements.ufr_id', '=', 'ufr.id')
+            ->join('universites', 'ufr.universite_id', '=', 'universites.id')
+            ->where('diplomes.statut', 'active')
+            ->where('filieres.statut', 'active')
+            ->where('departements.statut', 'active')
+            ->where('ufr.statut', 'active')
+            ->where('universites.statut', 'active')
+            ->select(
+                'diplomes.id as diplome_id',
+                'diplomes.libelle as diplome_libelle',
+                'diplomes.serie as diplome_serie',
+                'diplomes.option as diplome_option',
+                'diplomes.specialite as diplome_specialite',
+                'filieres.id as filiere_id',
+                'filieres.libelle as filiere_libelle',
+                'departements.id as departement_id',
+                'departements.libelle as departement_libelle',
+                'ufr.id as ufr_id',
+                'ufr.libelle as ufr_libelle',
+                'universites.id as universite_id',
+                'universites.libelle as universite_libelle'
+            )
+            ->get();
+
+        return response()->json($filieres_accessibles);
     }
 }

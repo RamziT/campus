@@ -662,6 +662,14 @@
                                                 "type": "string",
                                                 "example": "BAC C"
                                             },
+                                            "abreviation": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
                                             "specialite": {
                                                 "type": "string",
                                                 "example": "Mathématiques"
@@ -1386,6 +1394,90 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/niveaux-accessibles": {
+            "get": {
+                "tags": [
+                    "Niveaux"
+                ],
+                "summary": "Récupérer les niveaux accessibles",
+                "operationId": "38659d833eef8988b0e915334e87581a",
+                "responses": {
+                    "200": {
+                        "description": "Réponse de succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "diplome_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "diplome_libelle": {
+                                                "type": "string",
+                                                "example": "Baccalauréat"
+                                            },
+                                            "diplome_serie": {
+                                                "type": "string",
+                                                "example": "C"
+                                            },
+                                            "diplome_option": {
+                                                "type": "string",
+                                                "example": "Sciences"
+                                            },
+                                            "diplome_specialite": {
+                                                "type": "string",
+                                                "example": "Mathématiques"
+                                            },
+                                            "filiere_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "filiere_libelle": {
+                                                "type": "string",
+                                                "example": "Informatique"
+                                            },
+                                            "departement_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "departement_libelle": {
+                                                "type": "string",
+                                                "example": "Département de Mathématiques"
+                                            },
+                                            "ufr_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "ufr_libelle": {
+                                                "type": "string",
+                                                "example": "UFR Sciences et Techniques"
+                                            },
+                                            "universite_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "universite_libelle": {
+                                                "type": "string",
+                                                "example": "Université de Ouagadougou"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Niveaux non trouvés"
                     },
                     "500": {
                         "description": "Erreur serveur"

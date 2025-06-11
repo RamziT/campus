@@ -1,0 +1,95 @@
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'fontSize': '18px',
+      'fontFamily': 'Arial',
+      'primaryTextColor': '#000',
+      'primaryColor': '#fff',
+      'lineColor': '#333'
+    }
+  }
+}%%
+
+flowchart TB
+  subgraph Frontend["Frontend"]
+        UI["Interface Utilisateur Web"]
+        Mobile["Application Mobile"]
+  end
+
+  subgraph Auth["Authentification"]
+        KC["Keycloak<br>Identity Provider"]
+  end
+
+  subgraph subGraph1["API Gateway"]
+        APIGW["API Gateway<br>+ JWT Validation"]
+  end
+
+  subgraph Microservices["Microservices"]
+        MS_INE["Microservice<br>Gestion des comptes INE"]
+        MS_Inscription["Microservice<br>Gestion des orientations et inscriptions administratives"]
+        MS_Academic["Microservice<br>Gestion académiques et administratives"]
+        MS_Payments["Microservice<br>Gestion des allocations"]
+  end
+
+  subgraph subGraph4["Stockage de données"]
+        DB_INE[("Base de données<br>Comptes INE")]
+        DB_Inscription[("Base de données<br>Inscriptions")]
+        DB_Academic[("Base de données<br>Académique")]
+        DB_Payments[("Base de données<br>Allocations")]
+        DB_KC[("Base de données<br>Keycloak")]
+  end
+
+  %% Relations Frontend -> Keycloak (authentification)
+  UI -.->|"1- Login/SSO"| KC
+  Mobile -.->|"1- Login/SSO"| KC
+  KC -.->|"2- JWT Token"| UI
+  KC -.->|"2- JWT Token"| Mobile
+
+  %% Relations Frontend -> API Gateway
+  UI -->|"3- Requêtes + JWT"| APIGW
+  Mobile -->|"3- Requêtes + JWT"| APIGW
+
+  %% Validation JWT par API Gateway
+  APIGW -.->|"Validate JWT"| KC
+
+  %% Relations API Gateway -> Microservices
+  APIGW -->|"Route"| MS_INE
+  APIGW -->|"Route"| MS_Inscription
+  APIGW -->|"Route"| MS_Academic
+  APIGW -->|"Route"| MS_Payments
+
+  %% Relations Microservices -> API Gateway
+  MS_INE -.->|"4- Requêtes + JWT"| APIGW
+  MS_Inscription -.->|"4- Requêtes + JWT"| APIGW
+  MS_Academic -.->|"4- Requêtes + JWT"| APIGW
+  MS_Payments -.->|"4- Requêtes + JWT"| APIGW
+
+  %% Relations Microservices -> Bases de données
+  MS_INE -->|"CRUD"| DB_INE
+  MS_Inscription -->|"CRUD"| DB_Inscription
+  MS_Academic -->|"CRUD"| DB_Academic
+  MS_Payments -->|"CRUD"| DB_Payments
+  KC -->|"CRUD"| DB_KC
+
+  %% Styles personnalisés
+  UI:::frontend
+  Mobile:::frontend
+  KC:::auth
+  APIGW:::gateway
+  MS_INE:::microservice
+  MS_Inscription:::microservice
+  MS_Academic:::microservice
+  MS_Payments:::microservice
+  DB_INE:::database
+  DB_Inscription:::database
+  DB_Academic:::database
+  DB_Payments:::database
+  DB_KC:::database
+
+  %% Classes de style
+  classDef frontend fill:#e6ccff,stroke:#5500cc,stroke-width:2px,color:#333,font-weight:bold
+  classDef auth fill:#ffcc99,stroke:#ff6600,stroke-width:3px,color:#333,font-weight:bold
+  classDef gateway fill:#ff99cc,stroke:#cc0066,stroke-width:3px,color:#333,font-weight:bold
+  classDef microservice fill:#99ccff,stroke:#0066cc,stroke-width:2px,color:#333,font-weight:bold
+  classDef database fill:#99ff99,stroke:#009900,stroke-width:2px,color:#333,font-weight:bold

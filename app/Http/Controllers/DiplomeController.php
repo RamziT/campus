@@ -35,7 +35,7 @@ class DiplomeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'libelle' => 'required|in:Baccaulérat,Licence,Licence Professionnelle,Master,Doctorant',
+            'libelle' => 'required|in:Baccalauréat,Licence,Licence Professionnelle,Master,Doctorant',
             'abreviation' => 'nullable',
             'serie' => 'nullable',
             'specialite' => 'nullable',
@@ -92,7 +92,7 @@ class DiplomeController extends Controller
     public function update(Request $request, Diplome $diplome)
     {
         $validator = Validator::make($request->all(), [
-            'libelle' => 'required|in:Baccaulérat,Licence,Licence Professionnelle,Master,Doctorant',
+            'libelle' => 'required|in:Baccalauréat,Licence,Licence Professionnelle,Master,Doctorant',
             'abreviation' => 'nullable',
             'serie' => 'nullable',
             'spécialite' => 'nullable',

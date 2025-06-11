@@ -34,7 +34,7 @@
                                 <label for="libelle" class="form-label">Libellé <span class="text-danger">*</span></label>
                                 <select class="form-select @error('libelle') is-invalid @enderror" id="libelle" name="libelle" required>
                                     <option value="">Sélectionner un type de diplôme</option>
-                                    <option value="Baccaulérat" @selected(old('libelle') == 'Baccaulérat')>Baccalauréat</option>
+                                    <option value="Baccalauréat" @selected(old('libelle') == 'Baccalauréat')>Baccalauréat</option>
                                     <option value="Licence" @selected(old('libelle') == 'Licence')>Licence</option>
                                     <option value="Licence Professionnelle" @selected(old('libelle') == 'Licence Professionnelle')>Licence Professionnelle</option>
                                     <option value="Master" @selected(old('libelle') == 'Master')>Master</option>
@@ -138,7 +138,7 @@
         $('#libelle').change(function() {
             let abreviation = '';
             switch($(this).val()) {
-                case 'Baccaulérat': abreviation = 'BAC'; break;
+                case 'Baccalauréat': abreviation = 'BAC'; break;
                 case 'Licence': abreviation = 'LIC'; break;
                 case 'Licence Professionnelle': abreviation = 'LP'; break;
                 case 'Master': abreviation = 'MST'; break;

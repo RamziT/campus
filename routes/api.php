@@ -96,3 +96,6 @@ Route::prefix('diplomes')->group(function () {
 
 // Route spéciale pour les baccalauréats
 Route::get('baccalaureats', [ApiDiplomeController::class, 'getBaccalaureats']);
+
+// Route pour toutes les filieres accessibles et leurs diplomes correspondants
+Route::get('/niveaux-accessibles', [ApiNiveauController::class, 'getAllNiveauxAccessibles']);
