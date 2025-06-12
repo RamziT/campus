@@ -6,18 +6,10 @@ use App\Http\Controllers\ApiFiliereController;
 use App\Http\Controllers\ApiNiveauController;
 use App\Http\Controllers\ApiUfrController;
 use App\Http\Controllers\ApiUniversiteController;
-use App\Models\Departement;
-use App\Models\Diplome;
-use App\Models\Filiere;
-use App\Models\UFR;
-use App\Models\Universite;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 
-// User route
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Route::middleware('auth:keycloak')->group(function () {
 
 // Universités routes
 Route::prefix('universites')->group(function () {
@@ -99,3 +91,5 @@ Route::get('baccalaureats', [ApiDiplomeController::class, 'getBaccalaureats']);
 
 // Route pour toutes les filieres accessibles et leurs diplomes correspondants
 Route::get('/niveaux-accessibles', [ApiNiveauController::class, 'getAllNiveauxAccessibles']);
+
+// });
